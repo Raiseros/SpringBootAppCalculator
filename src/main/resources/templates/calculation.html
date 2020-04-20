@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Calculator</title>
+
+</head>
+
+
+<body>
+
+
+
+<form action="#"   th:action="@{/calculator}"
+                   th:object="${calculator}" method="POST">
+    <table>
+        <tr>
+            <td align="right">Количество метров :</td>
+            <td><input type="text" th:field="*{sumMeters}" placeholder="Количество метров"></td>
+        </tr>
+        <tr>
+            <td align="right">Стоимость за кв :</td>
+            <td><input type="text" th:field="*{costSquareMeter}" placeholder="Стоимость за кв"></td>
+        </tr>
+        <tr>
+            <td align="right">Сумма налогов :</td>
+            <td><input type="text" th:field="*{sumTaxes}" placeholder="Сумма налогов"></td>
+        </tr>
+        <tr>
+            <td align="right">ЧЕКБОКС авторский надзор :</td>
+            <td><input type="text" th:field="*{checkBox}" placeholder="ЧЕКБОКС авторский надзор"></td>
+        </tr>
+        <tr>
+            <td align="right">- 10% :</td>
+            <td><input type="text" th:field="*{remainsTenRate}" placeholder="- 10%"></td>
+        </tr>
+
+        <tr>
+            <td align="right">- 5% :</td>
+            <td><input type="text" th:field="*{remainsFiveRate}" placeholder="- 5%"></td>
+        </tr>
+
+        <tr>
+            <td align="right">- 20% :</td>
+            <td><input type="text" th:field="*{remainsTwentyRate}" placeholder="- 20%"></td>
+        </tr>
+
+
+        <tr>
+            <p></p>
+            <td align="right"><input type="submit" value="Рассчитать" /> </td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+
+</html>

@@ -12,7 +12,9 @@ public class Calculator {
 
     private long sumTaxes;
 
-    private long checkBox;
+    private boolean checkBox;
+
+    private long sumAfterCheckBox;
 
     private long remainsTenRate;
 
@@ -20,7 +22,15 @@ public class Calculator {
 
     private long remainsTwentyRate;
 
-    private long finishSum;
+    private long remainsThirtyRate;
+
+    public long getSumAfterCheckBox() {
+        return sumAfterCheckBox;
+    }
+
+    public void setSumAfterCheckBox(long sumAfterCheckBox) {
+        this.sumAfterCheckBox = sumAfterCheckBox;
+    }
 
     public long getSumMeters() {
         return sumMeters;
@@ -46,11 +56,11 @@ public class Calculator {
         this.sumTaxes = sumTaxes;
     }
 
-    public long getCheckBox() {
+    public boolean isCheckBox() {
         return checkBox;
     }
 
-    public void setCheckBox(long checkBox) {
+    public void setCheckBox(boolean checkBox) {
         this.checkBox = checkBox;
     }
 
@@ -78,27 +88,28 @@ public class Calculator {
         this.remainsTwentyRate = remainsTwentyRate;
     }
 
-    public long getFinishSum() {
-        return finishSum;
+    public long getRemainsThirtyRate() {
+        return remainsThirtyRate;
     }
 
-    public void setFinishSum(long finishSum) {
-        this.finishSum = finishSum;
+    public void setRemainsThirtyRate(long remainsThirtyRate) {
+        this.remainsThirtyRate = remainsThirtyRate;
     }
 
     public Calculator() {
 
     }
 
-    public Calculator(long sumMeters, long costSquareMeter, long sumTaxes, long checkBox, long remainsTenRate,
-                      long remainsFiveRate, long remainsTwentyRate, long finishSum) {
+    public Calculator(long sumMeters, long costSquareMeter, long sumTaxes, boolean checkBox, long sumAfterCheckBox,
+                      long remainsTenRate, long remainsFiveRate, long remainsTwentyRate, long remainsThirtyRate) {
         this.sumMeters = sumMeters;
         this.costSquareMeter = costSquareMeter;
         this.sumTaxes = sumTaxes;
         this.checkBox = checkBox;
+        this.sumAfterCheckBox = sumAfterCheckBox;
         this.remainsTenRate = remainsTenRate;
         this.remainsFiveRate = remainsFiveRate;
         this.remainsTwentyRate = remainsTwentyRate;
-        this.finishSum = finishSum;
+        this.remainsThirtyRate = remainsThirtyRate;
     }
 }

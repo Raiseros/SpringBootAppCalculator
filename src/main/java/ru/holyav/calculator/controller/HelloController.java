@@ -6,12 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.holyav.calculator.entity.Calculator;
 
+import java.sql.SQLException;
+
 
 @Controller
 public class HelloController {
-
-   /* @Autowired
-    private StudentService studentService;*/
 
 
     @RequestMapping(value ="/", method = RequestMethod.GET)
@@ -22,49 +21,37 @@ public class HelloController {
     }
 
 
-   /* @PostMapping("saveStudent")
+    @PostMapping("calculator")
     public String addStudent(@ModelAttribute("calculator") Calculator theCalculator) throws SQLException {
-        if(null != theCalculator && theCalculator.getId() > 0){
-            studentService.updateStudent(theCalculator);
+        long tempSumMeters = theCalculator.getSumMeters();
+        long tempCostSquareMeter = theCalculator.getCostSquareMeter();
+        boolean tempCheckBox = theCalculator.isCheckBox();
+        long tempSumTax = (((tempSumMeters * tempCostSquareMeter) * 6)/100);
+        theCalculator.setSumTaxes(tempSumTax);
+        long sumAfterSumTax = ((tempSumMeters * tempCostSquareMeter) - tempSumTax);
+        long tempsumAfterSumTax = sumAfterSumTax;
+
+        if ( tempCheckBox == true) {
+            tempsumAfterSumTax = (sumAfterSumTax - 1000);
+            tempSumMeters = (tempSumMeters * 1000);
+            theCalculator.setSumAfterCheckBox(tempSumMeters);
         } else{
-
-
-            studentService.saveStudent(theCalculator);
-            //securityService.autoLogin(theStudent.getFirstName(), theStudent.getConfirmPassword());
+            theCalculator.setSumAfterCheckBox(0);
         }
-        return "redirect:/";
-    }*/
+
+        long sumMinusTenRate = (sumAfterSumTax - ((sumAfterSumTax * 10) / 100));
+        theCalculator.setRemainsTenRate(sumMinusTenRate);
+        long sumMinusFiveRate = (sumAfterSumTax - ((sumAfterSumTax * 5) / 100));
+        theCalculator.setRemainsFiveRate(sumMinusFiveRate);
+        long sumMinusTwentyRate = (sumAfterSumTax - ((sumAfterSumTax * 20) / 100));
+        theCalculator.setRemainsTwentyRate(sumMinusTwentyRate);
+        long sumMinusThirtyRate = (sumAfterSumTax - ((sumAfterSumTax * 30) / 100));
+        theCalculator.setRemainsThirtyRate(sumMinusThirtyRate);
 
 
-
-
-
-   /* @RequestMapping(value ="/", method = RequestMethod.GET)
-    public String getStudents(Model model) {
-     List<Student> theStudents = studentService.getStudents();
-     model.addAttribute("students", theStudents);
-        return "list-students";
+        return "calculation2";
     }
 
 
-
-
-
-    @RequestMapping(value ="formForUpdate", method = RequestMethod.GET)
-    public String update(@RequestParam("studentId") int theId, Model model) {
-        Student theStudent = studentService.getStudent(theId);
-        model.addAttribute("student", theStudent);
-        return "registration";
-    }
-
-
-
-
-    @RequestMapping(value ="delete", method = RequestMethod.GET)
-    public String delete(@RequestParam("studentId") int theId) {
-        studentService.deleteStudent(theId);
-        return "redirect:/";
-    }
-    */
 }
 

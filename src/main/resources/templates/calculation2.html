@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Calculator2</title>
+
+</head>
+
+
+<body>
+<form action="#"   th:action="@{/calculator2}"
+      th:object="${calculator}" method="POST">
+
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Характеристика</th>
+                <th>Расчет</th>
+
+            </tr>
+            </thead>
+        <tbody>
+        <tr>
+            <td align="right">Количество метров  :</td>
+            <td th:text="${calculator.sumMeters}" />
+        </tr>
+        <tr>
+            <td align="right"> Стоимость за кв:</td>
+            <td th:text="${calculator.costSquareMeter}" />
+        </tr>
+
+        <tr>
+            <td align="right">Сумма налогов :</td>
+            <td th:text="${calculator.sumTaxes}" />
+        </tr>
+
+        <tr>
+            <td align="right">ЧЕКБОКС авторский надзор :</td>
+            <td th:text="${calculator.checkBox}" /> </td>
+        </tr>
+
+        <tr>
+            <td align="right">Сумма после ЧЕКБОКСА :</td>
+            <td th:text="${calculator.sumAfterCheckBox}" /> </td>
+        </tr>
+
+        <tr>
+            <td align="right"> - 10%:</td>
+            <td th:text="${calculator.remainsTenRate}" />
+        </tr>
+        <tr>
+            <td align="right">- 5% :</td>
+            <td th:text="${calculator.remainsFiveRate}" />
+        </tr>
+
+        <tr>
+            <td align="right">- 20% :</td>
+            <td th:text="${calculator.remainsTwentyRate}" /> </td>
+        </tr>
+
+        <tr>
+            <td align="right">- 30% :</td>
+            <td th:text="${calculator.remainsThirtyRate}" /> </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <tr>
+        <p></p>
+        <a th:href="@{/}">Back to Home Page</a>
+    </tr>
+</form>
+
+
+</body>
+
+</html>
